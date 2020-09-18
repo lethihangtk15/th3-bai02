@@ -1,0 +1,54 @@
+<p-panel header="Tìm kiếm" [style]="{'margin-top': '10px','text-align': 'left'}">
+  <div class="form-group">
+      <label for="usr">Nhóm danh mục:</label>
+      <!-- <input [disabled]="ten_san_pham != null && ten_san_pham != ''" [(ngModel)]="ma_san_pham" type="text" class="form-control"> -->
+      <select class="form-control" [(ngModel)]="nhom_dm" id="exampleFormControlSelect1">
+        <option>Tất cả</option>
+        <option>Ba công khai</option>
+        <option>Khoa Lý luận chính trị</option>
+        <option>khoa khoa học cơ bản</option>
+        <option>Đội ngũ cán bộ</option>
+        <option>Phòng-Ban-Trung tâm</option>
+        <option>Văn bằng 2</option>
+      </select>
+    </div>
+    <div class="form-group">
+      <label for="usr">Ngày tạo từ ngày:</label>
+      <input  [(ngModel)]="ngaybd" type="date" class="form-control">
+      <br>
+      <label for="usr">Ngày tạo đến ngày:</label>
+      <input  [(ngModel)]="ngaykt" type="date" class="form-control">
+    </div>
+    <div class="form-group">
+      <label for="usr">Nội dung cần tìm</label>
+      <input [(ngModel)]="noidung" type="text" class="form-control">
+    </div>
+    <div class="form-group" style="text-align: left; margin-top: 10px;">
+      <button (click)="TimKiem()" type="button" class="btn btn-danger"><i class="fa fa-search"></i> Tìm kiếm</button>
+    </div>
+</p-panel>
+<br>
+<p-table [value]="data" styleClass="p-datatable-gridlines">
+  <ng-template pTemplate="header">
+      <tr>
+          <th style="width: 3rem">
+              <p-tableHeaderCheckbox></p-tableHeaderCheckbox>
+          </th>
+          <th>Tiêu đề tin</th>
+          <th>Thuộc nhóm danh mục</th>
+          <th>Ngày phát hành</th>
+          <th>Tác vụ</th>
+      </tr>
+  </ng-template>
+  <ng-template pTemplate="body" let-product>
+      <tr>
+          <td>
+              <p-tableCheckbox [value]="news"></p-tableCheckbox>
+          </td>
+          <td>{{news.name}}</td>
+          <td>{{news.nhom}}</td>
+          <td>{{news.ngayphat}}</td>
+          <td><i class="fa fa-eye" aria-hidden="true"></i><i class="fa fa-pencil-square-o" aria-hidden="true"></i><i class="fa fa-trash-o" aria-hidden="true"></i></td>
+      </tr>
+  </ng-template>
+</p-table>
